@@ -1,9 +1,12 @@
 #!/bin/bash
 
+# Определение переменных
+GCP_PROJECT_ID="infra-189117"
 TIMESTAMP=$(date +%s)
 
-gcloud beta compute \
---project "infra-189117" instances create "instance-$TIMESTAMP" \
+# Создание инстанса с идентификатором, включающим временной штамп, для уникальности имени инстанса
+gcloud compute \
+--project $GCP_PROJECT_ID instances create "instance-$TIMESTAMP" \
 --zone "europe-west1-b" \
 --machine-type "g1-small" \
 --subnet "default" \
@@ -19,7 +22,5 @@ gcloud beta compute \
 --min-cpu-platform "Automatic" \
 --tags "puma-server" \
 --image-family "reddit-full" \
---image-project "infra-189117" \
---boot-disk-size "12" \
---boot-disk-type "pd-standard" \
+--image-project $GCP_PROJECT_ID \
 --boot-disk-device-name "instance-$TIMESTAMP"

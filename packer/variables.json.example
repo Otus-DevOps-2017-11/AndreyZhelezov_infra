@@ -1,7 +1,7 @@
 {
-  "proj_id": "Infra-5555555",
-  "s_im_fam": "debian-8",
-  "m_type": "f1-micro",
-  "snet_name": "projects/infra-555555/regions/europe-west1/subnetworks/network-name",
-  "mytags": "tag-for-server,another-tag"
+  "proj_id": "Your-Project-ID",
+  "s_im_fam": "ubuntu-1604-lts",
+  "m_type": "g1-small",
+  "snet_name": "default",
+  "mytags": ""
 }

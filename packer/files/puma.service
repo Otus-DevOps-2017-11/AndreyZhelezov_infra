@@ -1,5 +1,5 @@
 [Unit]
-Description=puma-server
+Description=Puma web-server
 After=syslog.target
 After=network.target
 
@@ -7,10 +7,11 @@ After=network.target
 Type=simple
 User=appuser
 WorkingDirectory=/home/appuser/reddit
-ExecStart=puma -p
+ExecStart=/usr/local/bin/puma -b tcp://0.0.0.0:9292
 
 TimeoutSec=30
-Restart=always
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
+

@@ -2,7 +2,7 @@
   "variables": {
     "proj_id": null,
     "s_im_fam": null,
-    "m_type": "f1-micro",
+    "m_type": "g1-small",
     "snet_name": "default",
     "mytags": ""
   },
