@@ -1,1 +1,7 @@
 /packer/variables.json
+*.swp
+*.tfstate
+*.tfstate.*.backup
+*.tfstate.backup
+*.tfvars
+.terraform/
