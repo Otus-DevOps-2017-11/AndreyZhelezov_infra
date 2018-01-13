@@ -1,6 +1,8 @@
 --- 
 - name: Configure hosts & deploy application 
   hosts: all 
+  vars: 
+    mongo_bind_ip: 0.0.0.0 
   tasks: 
     - name: Change mongo config file 
       become: true 
