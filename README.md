@@ -1,5 +1,21 @@
 #######################################################
 
+ansible. Домашнее задание #10.
+
+Основное ДЗ.
+В корневом каталоге репозитория был создан каталог ansible/. Ansible версии 2.4 уже был установлен на машине:
+
+ansible 2.4.2.0
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/azhelezov/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/dist-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 2.7.12 (default, Nov 19 2016, 06:48:10) [GCC 5.4.0 20160609]
+
+
+
+#######################################################
+
 terraform. Домашнее задание #8.
 
 Основное ДЗ.
