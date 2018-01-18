@@ -1,5 +1,33 @@
 #######################################################
 
+# ansible-1. Домашнее задание #10.
+## Установка Ansible.
+В корневом каталоге репозитория был создан каталог ansible/ и последующие операции исполнялись находясь в данном рабочем каталоге. 
+Ansible версии 2.4 уже был установлен на машине:
+```
+ansible 2.4.2.0
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/azhelezov/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/dist-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 2.7.12 (default, Nov 19 2016, 06:48:10) [GCC 5.4.0 20160609]
+```
+## Работа с инфраструктурой.
+### Файл инвентаря (inventory).
+На GCP развернута stage инфраструктура из ДЗ №9. В результате были созданы два сервера: приложения и БД.
+Был создан файл ./inventory в который были добавлены два созданных сервера и параметры подключения к ним. После чего проверено подключение к этим серверам посредством запуска на них модуля "ping" при помощи Ansible.
+Был создан файл конфигурации ./ansible.cfg в котором были указаны параметры запуска ansible по-умолчанию. После чего из файла ./inventory была убрана вся ненужная информация и оставлены только переменные определяющие для хостов их внешние ip-адреса для подключения к ним. 
+Сам файл ./iventory так же указан в конфиге и теперь при запуске ansible не нужно указывать на него параметром "-i".
+Работу ansible проверил при помощи запуска модуля "command" с атрибутом "uptime" на обоих серверах.
+### Работа с группами хостов.
+Далее файл ./inventory был изменен: каждый хост был добавлен в группу: app или db. Запуск ansible осуществлялся теперь с указанием не имен хостов, а групп: app, db, а так же специальной группы all которая включает в себя все хосты файла-инвентаря.
+Был создан файл inventory.yml в котором была отображена текущая инфраструктура но уже в формате YAML. Проверочный запуск ansible был проведен с параметром "-i inventory.yml". 
+### Исполнение комманд.
+Были рассмотрены и протестированы сходства и различия модулей command и shell.
+В качестве практики были проверены принципы действия идемпотентных и неидемпотентных модулей при помощи Ad-Hoc команд Ansible.
+
+#######################################################
+
 # terraform-2. Домашнее задание #9.
 ## Инфраструктура с двумя серверами.
 В рамках данного ДЗ нужно создать две ВМ(инстанса), поэтому были созданы два дополнительных образа при помощи packer: reddit-app-base и reddit-db-base. Для создания образов было использовано два новых шаблона packer: packer/app.json и packer/db.json. 
@@ -39,26 +67,26 @@ vpc.tf --> vpc.tf-old
 Т.о. после инициализации конфигураций в каталогах stage и prod структура каталога terraform приняла вид:
 ```./
 ├── files
-│   ├── deploy.sh
-│   └── puma.service
+│   ├── deploy.sh
+│   └── puma.service
 ├── modules
-│   ├── app
-│   │   ├── main.tf
-│   │   ├── outputs.tf
-│   │   └── variables.tf
-│   ├── db
-│   │   ├── main.tf
-│   │   ├── outputs.tf
-│   │   └── variables.tf
-│   └── vpc
-│       ├── main.tf
-│       └── variables.tf
+│   ├── app
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   ├── db
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   └── vpc
+│       ├── main.tf
+│       └── variables.tf
 ├── prod
-│   ├── main.tf
-│   ├── outputs.tf
-│   ├── terraform.tfstate
-│   ├── terraform.tfvars
-│   └── variables.tf
+│   ├── main.tf
+│   ├── outputs.tf
+│   ├── terraform.tfstate
+│   ├── terraform.tfvars
+│   └── variables.tf
 └── stage
     ├── main.tf
     ├── outputs.tf
