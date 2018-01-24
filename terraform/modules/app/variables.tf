@@ -32,6 +32,11 @@ variable puma_allow_rule_name {
   default     = "allow-puma-default"
 }
 
+variable nginx_allow_rule_name {
+  description = "Name for nginx allow network rule"
+  default     = "allow-nginx-default"
+}
+
 variable app_external_if_name {
   description = "Name for external network interface"
   default     = "reddit-app-ip"
