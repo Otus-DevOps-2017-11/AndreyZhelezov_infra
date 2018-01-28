@@ -4,4 +4,4 @@
   become: true
 
   roles:
-    - ../ansible/roles/db
+    - db
